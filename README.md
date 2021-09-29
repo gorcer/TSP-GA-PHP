@@ -8,12 +8,10 @@ composer install gorcer/tsp-ga-php
 ```
 
 ```php
-$city1 = new Point(43.176229, 131.920374);
-TourManager::addPoint($city1);
-$city2 = new Point(143.077401, 131.951273);
-TourManager::addPoint($city2);
-$city3 = new Point(43.148584, 131.906298);
-TourManager::addPoint($city3);
+
+TourManager::addPoint(new Point('city1', 43.176229, 131.920374));
+TourManager::addPoint(new Point('city2', 43.077401, 131.951273));
+TourManager::addPoint(new Point('city3', 43.148584, 131.906298));
 
 
 $pop = new Population(50, true);

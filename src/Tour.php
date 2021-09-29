@@ -17,8 +17,12 @@ class Tour
         for ($pointIndex = 0, $len = TourManager::numberOfPoints(); $pointIndex < $len; $pointIndex++) {
             $this->setPoint($pointIndex, TourManager::getPoint($pointIndex));
         }
+        $item = array_shift($this->tour);
 
         shuffle($this->tour);
+
+        array_unshift($this->tour, $item);
+
     }
 
     public function getPoint($tourPosition)
