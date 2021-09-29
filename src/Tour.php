@@ -14,21 +14,21 @@ class Tour
 
     public function generateIndividual()
     {
-        for ($cityIndex = 0, $len = TourManager::numberOfCities(); $cityIndex < $len; $cityIndex++) {
-            $this->setCity($cityIndex, TourManager::getCity($cityIndex));
+        for ($pointIndex = 0, $len = TourManager::numberOfCities(); $pointIndex < $len; $pointIndex++) {
+            $this->setPoint($pointIndex, TourManager::getPoint($pointIndex));
         }
 
         shuffle($this->tour);
     }
 
-    public function getCity($tourPosition)
+    public function getPoint($tourPosition)
     {
         return $this->tour[$tourPosition];
     }
 
-    public function setCity($tourPosition, City $city)
+    public function setPoint($tourPosition, Point $point)
     {
-        $this->tour[$tourPosition] = $city;
+        $this->tour[$tourPosition] = $point;
 
         $this->fitness = 0;
         $this->distance = 0;
@@ -47,19 +47,19 @@ class Tour
         if ($this->distance == 0) {
             $tourDistance = 0;
 
-            for ($cityIndex = 0, $len = $this->tourSize(); $cityIndex < $len; $cityIndex++) {
-                $fromCity = $this->getCity($cityIndex);
-                $destinationCity = null;
+            for ($pointIndex = 0, $len = $this->tourSize(); $pointIndex < $len; $pointIndex++) {
+                $fromPoint = $this->getPoint($pointIndex);
+                $destinationPoint = null;
                 
-                // Check we're not on our tour's last city, if we are set our
-                // tour's final destination city to our starting city
-                if ($cityIndex + 1 < $this->tourSize()) {
-                    $destinationCity = $this->getCity($cityIndex + 1);
+                // Check we're not on our tour's last point, if we are set our
+                // tour's final destination point to our starting point
+                if ($pointIndex + 1 < $this->tourSize()) {
+                    $destinationPoint = $this->getPoint($pointIndex + 1);
                 } else {
-                    $destinationCity = $this->getCity(0);
+                    $destinationPoint = $this->getPoint(0);
                 }
 
-                $tourDistance += $fromCity->distanceTo($destinationCity);
+                $tourDistance += $fromPoint->distanceTo($destinationPoint);
             }
 
             $this->distance = $tourDistance;
@@ -73,9 +73,9 @@ class Tour
         return count($this->tour);
     }
 
-    public function containsCity(City $city)
+    public function containsPoint(Point $point)
     {
-        return in_array($city, $this->tour);
+        return in_array($point, $this->tour);
     }
 
     public function __toString()

@@ -47,17 +47,17 @@ class GA
 
         for ($i = 0, $len = $child->tourSize(); $i < $len; $i++) {
             if ($startPos < $endPos && $i > $startPos && $i < $endPos) {
-                $child->setCity($i, $parent1->getCity($i));
+                $child->setPoint($i, $parent1->getPoint($i));
             } else if ($startPos > $endPos && !($i < $startPos && $i > $endPos)) {
-                $child->setCity($i, $parent1->getCity($i));
+                $child->setPoint($i, $parent1->getPoint($i));
             }
         }
 
         for ($i = 0, $len = $parent2->tourSize(); $i < $len; $i++) {
-            if (!$child->containsCity($parent2->getCity($i))) {
+            if (!$child->containsPoint($parent2->getPoint($i))) {
                 for ($ii = 0, $len2 = $child->tourSize(); $ii < $len2; $ii++) {
-                    if ($child->getCity($ii) == null) {
-                        $child->setCity($ii, $parent2->getCity($i));
+                    if ($child->getPoint($ii) == null) {
+                        $child->setPoint($ii, $parent2->getPoint($i));
                         break;
                     }
                 }
@@ -75,11 +75,11 @@ class GA
             if (TourManager::Random() < self::$mutationRate) {
                 $tourPos2 = (int) ($tour->tourSize() * TourManager::Random());
 
-                $city1 = $tour->getCity($tourPos1);
-                $city2 = $tour->getCity($tourPos2);
+                $point1 = $tour->getPoint($tourPos1);
+                $point2 = $tour->getPoint($tourPos2);
 
-                $tour->setCity($tourPos2, $city1);
-                $tour->setCity($tourPos1, $city2);
+                $tour->setPoint($tourPos2, $point1);
+                $tour->setPoint($tourPos1, $point2);
             }
         }
     }

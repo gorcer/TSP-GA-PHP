@@ -3,18 +3,18 @@ namespace tsp;
 
 Class TourManager
 {
-    static public $destinationCities = array();
+    static public $destinationPoints = array();
 
-    static public function addCity(City $city) {
-        self::$destinationCities[] = $city;
+    static public function addPoint(Point $point) {
+        self::$destinationPoints[] = $point;
     }
 
-    static public function getCity($index) {
-        return self::$destinationCities[$index];
+    static public function getPoint($index) {
+        return self::$destinationPoints[$index];
     }
 
-    static public function numberOfCities() {
-        return count(self::$destinationCities);
+    static public function numberOfPoints() {
+        return count(self::$destinationPoints);
     }
 
     // As PHP doesn't have a native 0.0 to 1.0 random float, this method is added 
