@@ -5,11 +5,13 @@ class Point {
 
     public $latitude;
     public $longitude;
+    public $name;
 
-    public function __construct($latitude, $longitude)
+    public function __construct($name, $latitude, $longitude)
     {
         $this->latitude = $latitude;
         $this->longitude = $longitude;
+        $this->name = $name;
     }
 
     public function getLatitude()
@@ -36,6 +38,7 @@ class Point {
 
     public function __toString()
     {
-        return $this->getLatitude() . ', '  . $this->getLongitude();
+        //return $this->getLatitude() . ', '  . $this->getLongitude();
+        return $this->name;
     }
 }

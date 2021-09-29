@@ -9,12 +9,12 @@ class Tour
 
     public function __construct()
     {
-        $this->tour = array_fill(0, TourManager::numberOfCities(), null);
+        $this->tour = array_fill(0, TourManager::numberOfPoints(), null);
     }
 
     public function generateIndividual()
     {
-        for ($pointIndex = 0, $len = TourManager::numberOfCities(); $pointIndex < $len; $pointIndex++) {
+        for ($pointIndex = 0, $len = TourManager::numberOfPoints(); $pointIndex < $len; $pointIndex++) {
             $this->setPoint($pointIndex, TourManager::getPoint($pointIndex));
         }
 
@@ -81,6 +81,10 @@ class Tour
     public function __toString()
     {
         return implode('|', $this->tour);
+    }
+
+    public function getTour() {
+        return $this->tour;
     }
 
 }

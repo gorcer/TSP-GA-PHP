@@ -9,6 +9,10 @@ Class TourManager
         self::$destinationPoints[] = $point;
     }
 
+    static public function clearPoints() {
+        self::$destinationPoints = [];
+    }
+
     static public function getPoint($index) {
         return self::$destinationPoints[$index];
     }
@@ -22,4 +26,5 @@ Class TourManager
     {
         return mt_rand(0, mt_getrandmax() - 1) / mt_getrandmax();
     }
+    
 }
