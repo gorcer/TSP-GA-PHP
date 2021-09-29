@@ -1,0 +1,9 @@
+{
+    "name": "pheroh/tsp-ga-php",  
+    "autoload": {
+      "psr-4": {
+        "tsp\\": "src/"
+      }
+    }
+  }
+  
