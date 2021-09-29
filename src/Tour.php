@@ -51,19 +51,26 @@ class Tour
         if ($this->distance == 0) {
             $tourDistance = 0;
 
+            $fromPoint = TourManager::$startPoint;
+
             for ($pointIndex = 0, $len = $this->tourSize(); $pointIndex < $len; $pointIndex++) {
-                $fromPoint = $this->getPoint($pointIndex);
-                $destinationPoint = null;
+                $destinationPoint = $this->getPoint($pointIndex);
+                
                 
                 // Check we're not on our tour's last point, if we are set our
                 // tour's final destination point to our starting point
-                if ($pointIndex + 1 < $this->tourSize()) {
+              /*  if ($pointIndex + 1 < $this->tourSize()) {
                     $destinationPoint = $this->getPoint($pointIndex + 1);
                 } else {
                     $destinationPoint = $this->getPoint(0);
-                }
+                }*/
+                
+                if ($destinationPoint == null)
+                    dd($this);
 
                 $tourDistance += $fromPoint->distanceTo($destinationPoint);
+
+                $fromPoint = $destinationPoint;
             }
 
             $this->distance = $tourDistance;

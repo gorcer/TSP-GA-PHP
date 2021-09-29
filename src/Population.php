@@ -30,7 +30,6 @@ class Population {
     public function getFittest()
     {
         $fittest = $this->tours[0];
-
         for ($i = 1; $i < $this->populationSize(); $i++) {
             if ($fittest->getFitness() <= $this->getTour($i)->getFitness()) {
                 $fittest = $this->getTour($i);

@@ -4,6 +4,11 @@ namespace tsp;
 Class TourManager
 {
     static public $destinationPoints = array();
+    static public $startPoint=null;
+
+    static public function setStartPoint(Point $point) {
+        self::$startPoint = $point;
+    }
 
     static public function addPoint(Point $point) {
         self::$destinationPoints[] = $point;
@@ -11,6 +16,7 @@ Class TourManager
 
     static public function clearPoints() {
         self::$destinationPoints = [];
+        self::$startPoint = null;
     }
 
     static public function getPoint($index) {

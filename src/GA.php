@@ -14,11 +14,12 @@ class GA
         $elitismOffset = 0;
 
         // Keep our best individual if elitism is enabled
+        
         if (self::$elitism) {
             $newPopulation->saveTour(0, $pop->getFittest());
             $elitismOffset = 1;
         }
-
+        
         // Crossover population
         // Loop over the new population's size and create individuals from
         // Current population
@@ -28,6 +29,7 @@ class GA
 
             $child = self::crossover($parent1, $parent2);
             $newPopulation->saveTour($i, $child);
+            
         }
 
         // Mutate the new population a bit to add some new genetic material
@@ -44,6 +46,8 @@ class GA
 
         $startPos = (int) (TourManager::Random() * $parent1->tourSize());
         $endPos   = (int) (TourManager::Random() * $parent1->tourSize());
+
+        $child->setPoint(0, $parent1->getPoint(0));
 
         for ($i = 0, $len = $child->tourSize(); $i < $len; $i++) {
             if ($startPos < $endPos && $i > $startPos && $i < $endPos) {
