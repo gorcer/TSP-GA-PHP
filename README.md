@@ -9,7 +9,7 @@ composer install gorcer/tsp-ga-php
 
 ```php
 
-TourManager::addPoint(new Point('city1', 43.176229, 131.920374));
+TourManager::addPoint(new Point('city1', 43.176229, 131.920374)); // Start point
 TourManager::addPoint(new Point('city2', 43.077401, 131.951273));
 TourManager::addPoint(new Point('city3', 43.148584, 131.906298));
 
